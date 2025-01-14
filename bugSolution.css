@@ -1,0 +1,23 @@
+To correctly style the first three list items, avoid using negative indices.  Instead, use a positive index range or a different selector approach:
+
+```css
+ul li:nth-child(-n+3) { /*Problematic code*/
+  color: red;
+}
+
+ul li:nth-child(n+1):nth-child(-n+3){
+  color:red;
+}
+/* Solution 1: Use a positive index range*/
+ul li:nth-child(n){ /* Style all list items */
+  color:blue; /* Set a default style */
+}
+ul li:nth-child(-n+3) {
+  color: red; /* Correctly styles the first three */
+}
+/* Solution 2:  More readable approach */
+ul li:nth-child(1), ul li:nth-child(2), ul li:nth-child(3){
+  color:red;
+}
+```
+The solution uses a range of positive indices ensuring the correct items are selected and avoiding unexpected outcomes with negative indices.
